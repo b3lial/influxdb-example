@@ -1,4 +1,13 @@
 #!/bin/bash
+
+if [ ! -d data ]; then
+  mkdir -p data;
+fi
+
+if [ ! -d config ]; then
+  mkdir -p config;
+fi
+
 docker run -d -p 8086:8086 \
       --name influxdb2 \
       -v $PWD/data:/var/lib/influxdb2 \
