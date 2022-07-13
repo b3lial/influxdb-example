@@ -28,7 +28,10 @@ This script emulates a temperature/humidity sensor. Run `write-test-data.sh` to 
 * random temperature
 * random humidity 
  
-values into the influxdb.
+values into the influxdb. Needs a valid token passed by parameter. Example usage:
+```bash
+./write-test-data.sh `./get-token.sh`
+```
 
 ## Read Data
 
