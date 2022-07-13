@@ -10,5 +10,5 @@ curl --request POST \
   --header "Content-Type: text/plain; charset=utf-8" \
   --header "Accept: application/json" \
   --data-binary "
-    buero temperature=$temp,humidity=$hum
+    office temperature=$temp,humidity=$hum
     "
