@@ -8,13 +8,18 @@ Collection of scripts to:
 
 ## Start the database
 
-If you run the scripts for the first time, invoke `./setup-db.sh`. In the script, adjust the following variables:
+If you run the scripts for the first time, invoke `./setup-db.sh`. The script sets the following variables via
+commandline parameter:
 
 * DOCKER_INFLUXDB_INIT_USERNAME
 * DOCKER_INFLUXDB_INIT_PASSWORD
 * DOCKER_INFLUXDB_INIT_ORG
 * DOCKER_INFLUXDB_INIT_BUCKET
 
+Example usage:
+```bash
+./setup-db.sh christian secretpassword phobosys cloudsensor
+```
 Afterwards, the container can be started via `run-db.sh`
 
 ## Get API Token
