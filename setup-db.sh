@@ -18,3 +18,7 @@ docker run -d -p 8086:8086 \
       -e DOCKER_INFLUXDB_INIT_ORG=$3 \
       -e DOCKER_INFLUXDB_INIT_BUCKET=$4 \
       influxdb:latest
+
+until [ "`docker inspect -f {{.State.Running}} influxdb2`"=="true" ]; do
+    sleep 0.1;
+done;
