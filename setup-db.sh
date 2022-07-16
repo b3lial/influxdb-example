@@ -1,17 +1,12 @@
 #!/bin/bash
+set -e
 
-if [ ! -d data ]; then
-  mkdir -p data;
-fi
-
-if [ ! -d config ]; then
-  mkdir -p config;
-fi
-
+docker volume create influx-data
+docker volume create influx-config
 docker run -d -p 8086:8086 \
       --name influxdb2 \
-      -v $PWD/data:/var/lib/influxdb2 \
-      -v $PWD/config:/etc/influxdb2 \
+      -v influx-data:/var/lib/influxdb2 \
+      -v influx-config:/etc/influxdb2 \
       -e DOCKER_INFLUXDB_INIT_MODE=setup \
       -e DOCKER_INFLUXDB_INIT_USERNAME=$1 \
       -e DOCKER_INFLUXDB_INIT_PASSWORD=$2 \
@@ -20,5 +15,5 @@ docker run -d -p 8086:8086 \
       influxdb:latest
 
 until [ "`docker inspect -f {{.State.Running}} influxdb2`"=="true" ]; do
-    sleep 0.1;
+    sleep 1;
 done;
